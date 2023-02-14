@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvus"></canvas>
+  </body>
+  <script>
+    //그림판
+    /** @type {HTMLCanvasElement} */
+    const myCanvus = document.getElementById("myCanvus");
+    myCanvus.width = 500;
+    myCanvus.height = 300;
+    myCanvus.style.backgroundColor = "gray";
+    /** @type {CanvasRenderingContext2D} */
+    const context = myCanvus.getContext("2d");
+
+    context.beginPath();
+
+    context.arc(50, 50, 50, 0, Math.PI);
+
+    context.fillStyle = "blue";
+
+    context.fill();
+
+    context.fillStyle = "red";
+    context.fillRect(200, 50, 100, 50);
+
+    context.fillStyle = "black";
+    context.font = "30px Arial";
+    context.fillText("안녕하세요", 200, 100);
+
+    const image = new Image();
+    image.src = "./asset/img/mole.png";
+    image.onload = () => {
+      context.drawImage(image, 100, 100, 100, 100);
+    };
+  </script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvus"></canvas>
+  </body>
+  <script>
+    let circlex = 50;
+    let circley = 50;
+    // let rPressed = false;
+    //그림판
+    /** @type {HTMLCanvasElement} */
+    const myCanvus = document.getElementById("myCanvus");
+    myCanvus.width = 500;
+    myCanvus.height = 300;
+    myCanvus.style.backgroundColor = "gray";
+    /** @type {CanvasRenderingContext2D} */
+    const context = myCanvus.getContext("2d");
+
+    const draw = () => {
+      context.clearRect(0, 0, myCanvus.width, myCanvus.height);
+      context.beginPath();
+      context.arc(circlex, circley, 10, 0, 2 * Math.PI);
+      context.fillStyle = "black";
+      context.fill();
+    };
+
+    // document.onkeydown = (event) => {
+    //   if (event.keyCode == 39) {
+    //     rPressed = true;
+    //     circlex = circlex + 10;
+    //   }
+    // };
+    // document.onkeyup = (event) => {
+    //   if (event.keyCode == 39) {
+    //     rPressed = false;
+    //     circlex = circlex + 10;
+    //   }
+    // };
+
+    document.onkeydown = (event) => {
+      console.log(event);
+      if (event.keyCode == 37) {
+        circlex = circlex - 7;
+      } else if (event.keyCode == 38) {
+        circley = circley - 7;
+      } else if (event.keyCode == 39) {
+        circlex = circlex + 7;
+      } else if (event.keyCode == 40) {
+        circley = circley + 7;
+      }
+    };
+    setInterval(draw, 1);
+  </script>
+</html>
